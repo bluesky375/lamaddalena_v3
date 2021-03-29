@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SERVICES' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('assets/images/bg-black.jpg'); color: white" class="main-menu">
+  <ion-list>
+    <button ion-item *ngFor="let p of subMenus" (click)="openPage(p)">
+        <ion-avatar item-left>
+          <img [src]="p.image" />
+        </ion-avatar>
+        <h2>{{p.title | translate | uppercase }}</h2>
+      </button>
+  </ion-list>
+</ion-content>
+<ion-footer></ion-footer>

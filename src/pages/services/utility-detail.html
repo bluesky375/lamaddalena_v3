@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ title | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+  <div *ngIf="title =='NUMBER'">
+    <ion-card *ngFor="let h of sponsors | orderBy: 'created' : false">
+        <a (click)="call(h.description)">
+          <img-loader [src]="h.image" useImg></img-loader>
+        </a>
+    </ion-card>
+  </div>
+  <div *ngIf="title =='TRANSPORT'">
+    
+    <div class="taxi-header"> TAXI </div>
+    <ion-card *ngFor="let h of taxies | orderBy: 'created' : false" class="taxi">
+      <a (click)="call(h.sponsorData.phone1)">
+        <img-loader [src]="h.image" useImg></img-loader>
+      </a>
+    </ion-card>
+    <br>
+
+    <div class="ferries-header"> {{ 'FERRIES' | translate | uppercase}} </div>
+    <ion-card *ngFor="let h of ferries | orderBy: 'created' : false" class="taxi">
+      <a (click)="call(h.transportData.transportPhone)">
+        <img-loader [src]="h.image" useImg></img-loader>
+      </a>
+      <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+      <ion-card-content>
+        <p class="acapo" *ngIf="h.description">{{h.description}}</p>
+        <div *ngFor="let tt of h.transportData.timeTables" style="margin-top:5px">
+           <h4 class="ferries-route">{{tt.name}}</h4>
+           <p>{{tt.timings}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="urban-header"> {{ 'URBAN_T' | translate | uppercase}} </div>
+    <ion-card *ngFor="let h of urbanoes | orderBy: 'created' : false" class="taxi">
+      <a (click)="call(h.transportData.transportPhone)">
+        <img-loader [src]="h.image" useImg></img-loader>
+      </a>
+      <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+      <ion-card-content>
+        <h3 class="transport-title" *ngIf="h.title">{{h.title | translate | uppercase }}</h3>
+        <p class="acapo" *ngIf="h.description">{{h.description}}</p>
+        <div *ngFor="let tt of h.transportData.timeTables" style="margin-top:5px">
+          <h4 class="h-routes">{{tt.name}}</h4>
+          <p class="p-timetable">{{tt.timings}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <div class="urban-header"> {{ 'URBAN_EXTRA' | translate | uppercase}} </div>
+    <ion-card *ngFor="let h of extraUrbanoes | orderBy: 'created' : false" class="taxi">
+      <a (click)="call(h.transportData.transportPhone)">
+        <img-loader [src]="h.image" useImg></img-loader>
+      </a>
+      <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+      <ion-card-content>
+        <p>{{h.description}}</p>
+        <div *ngFor="let tt of h.transportData.timeTables" style="margin-top:5px">
+           <h4>{{tt.name}}</h4>
+           <p>{{tt.timings}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card> 
+
+    <div class="train-header"> {{ 'TRAINS' | translate | uppercase}} </div>
+    <ion-card *ngFor="let h of trains | orderBy: 'created' : false" class="taxi">
+      <a (click)="call(h.transportData.transportPhone)">
+        <img-loader [src]="h.image" useImg></img-loader>
+      </a>
+      <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+      <ion-card-content>
+        <p>{{h.description}}</p>
+        <div *ngFor="let tt of h.transportData.timeTables" style="margin-top:5px">
+           <h4>{{tt.name}}</h4>
+           <p>{{tt.timings}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card> -->
+  </div>
+
+  <div *ngIf="title =='PHARMACY'">
+   <div *ngFor="let h of sponsors | orderBy: 'created' : false">
+        <ion-card class="taxi">
+            <img-loader [src]="h.image" useImg></img-loader>
+            <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+          <div class="pharmacy-header"> {{h.title}} </div>
+          <ion-card-content>
+           <p class="acapo">{{h.description}}</p>
+            <ion-grid >
+              <ion-row class="pharmacy-row" wrap *ngFor="let od of h.pharmacyData.openingDates">
+                <ion-col width-33> {{ od.date }}</ion-col>
+                <ion-col width-77> {{od.name}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+    </div>
+  </div>
+    
+  <div *ngIf="title =='GARBAGE'">
+    <ion-card *ngFor="let h of sponsors">
+      <img-loader [src]="h.image" useImg></img-loader>
+      <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+      <ion-card-content>
+        <ion-card-title>
+          {{h.title}}
+        </ion-card-title>
+        <div [innerHTML]="h.description"></div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="title =='BANCOMAT'">
+    <ion-card>
+      <div style="height:400px; width:100%;" id="map"></div>
+    </ion-card> 
+    <!--<div id="map-container" style="position: absolute; top: 0px; bottom: 20px;width: 100%; height: 50%;">
+    
+    <div style="height:100%; width:100%;" id="map"></div>
+    </div> -->
+    <ion-card *ngFor="let b of sponsors | orderBy: 'created' : false">
+        <a (click)="goToMap(b)">
+          <img-loader [src]="b.image" useImg></img-loader>
+        </a>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-footer></ion-footer>

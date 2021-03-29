@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ event.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+  <ion-card>
+     <img-loader [src]="event.image" useImg></img-loader>
+    <ion-card-content>
+      <ion-card-title style="padding:0">
+         {{event.title}}
+      </ion-card-title>
+      
+      <p style="font-style: italic;"> {{ event.startDate | date : 'dd-MM' }}</p>
+      <p style="margin-bottom:20px; font-style: italic;" *ngIf=event.startTime> h. {{event.startTime}} - {{event.location}} </p>
+      <p style="margin-bottom:20px; font-style: italic;" *ngIf="event.startTime==null">{{event.location}} </p>
+       <div  [innerHTML]="event.description"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer></ion-footer>

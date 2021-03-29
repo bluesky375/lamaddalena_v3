@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'METEO' | translate}}</ion-title>
+  </ion-navbar>
+   <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="day" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="0" checked>
+        {{'OGGI' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        {{'DOMANI' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        {{'DOPODOMANI' | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+  
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+<ion-card *ngFor="let m of meteos | tregiorni: day">
+<ion-item>
+   
+        <ion-avatar item-end>
+      <img src="{{m.tempo}}">
+    </ion-avatar>
+     <h2>
+      {{m.ora | translate}}
+    </h2>
+    <p style="color: gray">{{m.tempo_alt | translate}}</p>
+  </ion-item>
+
+  <ion-card-content style="background-color: white;">
+    <ion-row>
+    <ion-col>
+    <span style="color: gray">Temp.<br>{{m.temp}}°C</span>
+  </ion-col>
+  <ion-col>
+    <span style="color: gray">{{'UMID' | translate}}<br>{{m.umid}}%</span>
+  </ion-col>
+<ion-col *ngIf="m.windmagn <= 39">
+    <span *ngIf="m.windpath=='Calma di vento'" style="color: green">{{'CALMA_DI_VENTO' | translate}}</span>
+    <span *ngIf="m.windpath!='Calma di vento'" style="color: gray">{{'VENTO' | translate}}<br>{{m.windmagn}} km/h</span>
+  </ion-col>
+  <ion-col *ngIf="m.windmagn > 39">
+    <span style="color: red">{{'VENTO' | translate}}<br>{{m.windmagn}} km/h</span>
+  </ion-col>
+    <ion-col *ngIf="m.windpath!='Calma di vento'">
+    <img height="50px" src="./assets/images/winds/{{m.windpath}}.svg">
+  </ion-col>
+  <ion-col *ngIf="m.windstrong <= 39">
+    <span *ngIf="m.windpath=='Calma di vento'" style="color: green">{{'CALMA_DI_VENTO' | translate}}</span>
+    <span *ngIf="m.windpath!='Calma di vento'" style="color: gray">{{'RAFFICHE' | translate}}<br>{{m.windstrong}} km/h</span>
+  </ion-col>
+  <ion-col *ngIf="m.windstrong > 39">
+    <span style="color: red">{{'RAFFICHE' | translate}}<br>{{m.windstrong}} km/h</span>
+  </ion-col>
+</ion-row>
+  </ion-card-content>
+  <ion-row style="background-color: white;">
+    <ion-col *ngIf="m.windpath!='Calma di vento'">
+      <button ion-button icon-start clear small (click)="openModal(m)">
+        <ion-icon name="information-circle"></ion-icon>{{'SPIAGGE_RIPARATE' | translate}}
+      </button>
+    </ion-col>     
+        <ion-col *ngIf="m.windpath=='Calma di vento'">
+      <p>&nbsp;</p>
+    </ion-col>   
+  </ion-row>
+</ion-card>
+
+ <ion-note>Informazioni elaborate dal Servizio Meteorologico dell’Aeronautica Militare e pubblicate sul sito www.meteoam.it</ion-note>
+</ion-content>
+<ion-footer></ion-footer>

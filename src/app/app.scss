@@ -1,0 +1,247 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+@import '../theme/theme-dark';
+
+@import '../theme/theme-light';
+
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+body {   
+
+}
+/* 1792x828px at 326ppi iPhone 11*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+.app-root {
+margin-top: calc(constant(safe-area-inset-top) - 12px); // for ios 11.1
+    margin-top: calc(env(safe-area-inset-top) - 12px); // for ios 11.2 and onwards
+    margin-bottom: calc(env(safe-area-inset-bottom) + 12px;
+    height: calc(100% - constant(safe-area-inset-top) + 22px);
+    height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom) + 22px);
+}}
+
+/* iPhone X and iPhone Xs e 11 Pro */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+.app-root {
+margin-top: calc(constant(safe-area-inset-top) - 12px); // for ios 11.1
+    margin-top: calc(env(safe-area-inset-top) - 12px); // for ios 11.2 and onwards
+    margin-bottom: calc(env(safe-area-inset-bottom) + 12px;
+    height: calc(100% - constant(safe-area-inset-top) + 22px);
+    height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom) + 22px);
+}}
+
+/* Phone Xs Max e 11 Pro Max*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) { 
+ @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) { 
+.app-root {
+margin-top: calc(constant(safe-area-inset-top) - 12px); // for ios 11.1
+    margin-top: calc(env(safe-area-inset-top) - 12px); // for ios 11.2 and onwards
+    margin-bottom: calc(env(safe-area-inset-bottom) + 12px;
+    height: calc(100% - constant(safe-area-inset-top) + 22px);
+    height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom) + 22px);
+}}}
+
+ion-menu {
+}
+
+.toolbar{
+    min-height: 58px;
+    button{
+        color: white;
+    }
+
+}
+
+.toolbar-background{
+    background: transparent !important;
+    color: white;
+    border-color : white !important;
+}
+
+.toolbar-title{
+    color: white;
+}
+
+.main-menu {
+    .item {
+        background: transparent;
+        color: white;
+    }
+
+    ion-avatar{
+        img{
+            height:50px;
+            width:50px;
+        }
+    }
+}
+
+.item-block:first-child{
+    border: none !important;
+}
+
+.dashboard{
+    .item-inner{
+        border-bottom: none !important;
+    }
+}
+
+.card {
+    margin-right:2px;
+    margin-left:2px;
+    background: transparent;
+    color: white;
+    width: calc(100% - 4px);
+    text-align: justify;
+
+    .card-title{
+        color: white;
+    }
+    p{
+        color: white;
+    }
+}
+
+.taxi-header {
+    background-color: #fefd04;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    margin:2px;
+}
+
+.ferries-header{
+    background-color: white;
+    font-size: 20px;
+    text-align: center;
+    margin:2px;
+    color: #006ab4;
+}
+
+h4.ferries-route {
+    background-color:#006ab4;
+    text-align: center;
+    font-size: 16px;
+
+}
+h4.h-routes {
+    background-color:#006ab4;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+p.p-timetable {
+    font-size: 16px;
+    line-height:1em;
+    white-space: pre-wrap;
+}
+
+p.acapo {
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+.taxi{
+    /* margin-top: 2px;
+    margin-bottom: 2px; */
+}
+
+.pharmacy-header {
+    background-color: green;
+    font-size: 20px;
+    text-align: center;
+    margin:2px;
+}
+
+.urban-header, .train-header {
+    background-color: grey;
+    font-size: 20px;
+    text-align: center;
+    margin:2px;
+}
+
+.card-md h3, .card-md h4, .card-md h5, .card-md h6 {
+    color: white !important;
+}
+
+.pharmacy-row {
+    
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-bottom-color: seagreen;
+}
+
+.caption {
+    font-size: 14px;
+    font-style: italic;
+    border-top: 1px;
+    border-color: #8b928f;
+    background-color: #0d357e;
+    padding-top: 1px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    color: #ffffff;
+}
+
+.card-title-md {
+    font-size: 1.8rem !important;
+}
+
+// 
+h3.events-list-title {
+    color: yellow ;
+    line-height: 1.4;
+}
+
+p.events-p {
+   color: white;
+}
+
+h3.transport-title {
+    color: yellow !important;
+}
+// for covering full screen : xavier 17.04.19
+
+// ion-content {
+//    /*color: white ! important;*/
+//    background-size: cover;
+//    /*background-image: url('../assets/images/bg-black.jpg') !important; */
+//} 
+
+
+
+.content-ios, .content-md {
+   background-color: transparent !important;
+}
+
+// for fix cut off in ion-list : xavier 17.04.21
+ion-label{
+margin-top:0px !important;
+padding-top:5px !important;
+}
+
+#map {
+    height: 500px;
+    width: auto;
+  }
+.toast-primary {
+    .toast-wrapper {
+        background-color: #387ef5 !important;
+    }
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'EVENTS' | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openFilter($event)">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('assets/images/bg-black.jpg'); color: white" class="main-menu">
+  
+  <ion-list *ngFor="let grp of events">
+    <ion-list-header>
+       {{ grp.monthName | translate}}
+    </ion-list-header>
+    
+    <button ion-item *ngFor="let p of grp.events | orderBy: 'startDate'" (click)="itemTapped($event,p)">
+        <ion-avatar item-left>
+          <h2 style="text-align:center;font-size:25px;font-weight:bold">{{p.startDate | date : 'dd'}}</h2>
+          <img-loader [src]="p.imgLogo" useImg></img-loader>
+        </ion-avatar>
+       <h3 class="events-list-title">{{p.title | translate | uppercase }}</h3>
+        <p class="events-p" *ngIf=p.startTime> h.{{p.startTime}} - {{p.location}}</p>
+        <p class="events-p" *ngIf="p.startTime==null"> {{p.location}}</p>
+        <p class="events-p" [innerHTML]="p.description"></p>
+      </button>
+  </ion-list> 
+</ion-content>
+<ion-footer></ion-footer>

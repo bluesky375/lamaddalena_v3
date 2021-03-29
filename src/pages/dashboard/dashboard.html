@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="main-menu dashboard" padding style="color: white">
+  <div style="border: none; text-align:center">
+        <img class="title-image" style="height: 90px" src="assets/images/logo-bianco.png" (click)="callMenu()">
+  </div>
+  <!--<h5 text-center style="margin:0; color:white;">
+      {{ 'DASHBOARD.LOGO_TEXT' | translate }}
+  </h5> -->
+  <!--<div style="background-color:red;"><p style="margin-top: 90%; color:white;" text-center>
+    {{ 'DASHBOARD.BOTTOM_TEXT' | translate }}  </p></div> -->
+
+</ion-content>
+<ion-footer text-center text-justify>
+{{ 'DASHBOARD.BOTTOM_TEXT' | translate }}
+</ion-footer>

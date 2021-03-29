@@ -1,0 +1,29 @@
+.theme-dark {
+
+ion-footer {
+  margin-bottom: constant(safe-area-inset-bottom) !important; /* iOS 11.0 */
+  margin-bottom: env(safe-area-inset-bottom) !important; /* iOS 11.2 */
+  padding: 8px; 
+  font-size:14px; 
+  color:white; 
+}
+
+.dashboard {
+  background: transparent !important;
+  background-image: url('../assets/images/bg-black.jpg') !important;
+}
+
+.privacy {
+  background: transparent !important;
+  background-image: url('../assets/images/bg-black.jpg') !important;
+}
+
+.offers {
+  background: transparent !important;
+  background-image: url('../assets/images/yesconticino_bg.jpg') !important;
+  background-repeat: repeat-Y;
+}
+
+}
+
+

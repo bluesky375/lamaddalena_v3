@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Yesconticino</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<!--<ion-content class="main-menu privacy" padding> -->
+
+<ion-content class="main-menu offers" padding>
+<img src="./assets/images/yesconticino_header.jpg">
+<div id="privacy_it" *ngIf="currentLang =='it'">
+<div class="card"><br>
+Quest'anno l'App La Maddalena Arcipelago si fa promotrice di un piccolo (per ora) circuito di scontistica. Mostrando questa schermata dell'App potrai richiedere il 10% di sconto su prodotti e servizi. Puoi identificare le attività che partecipano a Yesconticino grazie all'icona della stella col 10%. Troverai l'icona sullo spazio promozionale delle attività nella sezione servizi. Se l'offerta riguarda solo alcuni prodotti una dicitura sotto l’icona lo specificherà. Le attività che la applicano senza restrizioni riporteranno la dicitura "yesconticino"<br>
+</div>
+<div class="card" id="regole"><br>Poche regole per richiedere lo sconto:<br>
+<ul style="list-style-image: url('./assets/images/yesconticino_bullet.png');">
+<li>Yesconticino è applicabile solo su spese superiori ai € 10,00.</li>
+<li>Richiedi il tuo sconto prima della compilazione della ricevuta o meglio ancora prima di richiedere il servizio.</li>
+<li>Mostra questa schermata al momento della richiesta.</li>
+<li>Yesconticino non è cumulabile con altri sconti.</li>
+<li>Yesconticino è un piccolo atto di cortesia, richiedilo con cortesia ;-)</li>
+</ul>
+<br>
+</div>
+</div> <!-- End privacy IT -->
+<div id="privacy_en" *ngIf="currentLang =='en'">
+<div class="card"><br>
+The La Maddalena Arcipelago App promotes a small (for now) discount circuit. By showing this screen of the App you can request a 10% discount on products and services. You can identify the businnesses participating in Yesconticino by the 10% star icon. You will find the icon in the services section. If the offer is restricted to some products, a wording below the icon will specify it. Businnesses that apply it without restrictions will bear the only wording "yesconticino"<br>
+</div>
+<div class="card" id="regole-en"><br>Few rules to request the discount:<br>
+<ul style="list-style-image: url('./assets/images/yesconticino_bullet.png');">
+<li>Yesconticino is applicable only on expenses over € 10.00.</li>
+<li>Request your discount before receipt or better before requesting the service.</li>
+<li>Show this screen when requesting.</li>
+<li>Yesconticino cannot be combined with other discounts.</li>
+<li>Yesconticino it's a little act of courtesy, ask for it politely ;-)</li>
+</ul>
+<br>
+</div>
+</div> <!-- End privacy EN -->
+<img src="./assets/images/yesconticino_footer.png">
+</ion-content>
+<ion-footer>
+	
+</ion-footer>

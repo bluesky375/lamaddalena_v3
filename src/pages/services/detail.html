@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ sponsor.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+<!-- Sponsor Premium : visualizzo slides, slogan e descrizione -->
+  <ion-card *ngIf="sponsor.sponsorData && sponsor.sponsorData.isPremium">
+   <ion-slides [pager]="true" [autoplay]="3000" [effect]="fade">
+      <ion-slide *ngIf="sponsor.sponsorData.image1">
+       <img-loader src={{sponsor.sponsorData.image1}} useImg></img-loader> 
+      </ion-slide>
+      <ion-slide *ngIf="sponsor.sponsorData.image2">
+       <img-loader src={{sponsor.sponsorData.image2}} useImg></img-loader> 
+      </ion-slide>
+      <ion-slide *ngIf="sponsor.sponsorData.image3">
+       <img-loader src={{sponsor.sponsorData.image3}} useImg></img-loader> 
+      </ion-slide>
+    </ion-slides> <ion-card-content *ngIf="sponsor.sponsorData">
+
+   <!-- <ion-card-title style="color: yellow" *ngIf="sponsor.sponsorData"> -->
+    <ion-card-title style="color: #07AAF6" *ngIf="sponsor.sponsorData">
+      {{ sponsor.sponsorData.slogan}}      
+      </ion-card-title>
+    <p class="acapo">{{sponsor.description}}</p>
+    <img-loader *ngIf="showMapImage && sponsor.sponsorData" src={{sponsor.sponsorData.mapImage}} useImg></img-loader> 
+
+  </ion-card-content>
+  </ion-card>
+  <!-- Fine sponsor premium> -->
+
+  <!-- Sponsor semplice : visualizzo solo banner -->
+  <ion-card *ngIf="!sponsor.sponsorData.isPremium">
+      <img-loader src={{sponsor.image}} useImg></img-loader>
+  </ion-card>
+  <!-- Fine sponsor semplice -->
+
+   <ion-grid style="background-color: rgba(250,250,255,0.95)">
+    <ion-row>
+      <ion-col align="center" *ngIf="sponsor.sponsorData.phone1"><img src="assets/images/call-on.svg" style="width : 50px ; height : auto" (click)="call(sponsor.sponsorData.phone1)" ></ion-col>
+   
+      <ion-col align="center" *ngIf="sponsor.sponsorData.phone2"><img src="assets/images/call-on.svg" style="width : 50px ; height : auto" (click)="call(sponsor.sponsorData.phone2)" ></ion-col>
+      
+      <ion-col align="center" *ngIf="sponsor.sponsorData.geo"><img src="assets/images/marker-on.svg" style="width : 50px ; height : auto" (click)="openMapModal(sponsor.title,sponsor.sponsorData.geo);" ></ion-col>
+      
+      <ion-col align="center" *ngIf="sponsor.sponsorData.email"><img src="assets/images/mail-on.svg" style="width : 50px ; height : auto" (click)="mailto(sponsor.sponsorData.email)" ></ion-col>
+      
+  </ion-row>
+  </ion-grid>
+  <div id="mapImage"><img-loader [src]="sponsor.sponsorData.mapImage" useImg></img-loader></div>
+
+    <ion-row></ion-row>
+  <!---<div style="height:400px" id="map"></div> -->
+ 
+</ion-content>
+<ion-footer></ion-footer>

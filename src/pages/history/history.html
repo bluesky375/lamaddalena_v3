@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'HISTORY' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+  <ion-card *ngFor="let h of histories | orderBy: 'created' : false">
+     <img-loader [src]="h.image" useImg></img-loader>
+     <span  *ngIf="h.imageCaption" class="caption">{{h.imageCaption}}</span>
+    <ion-card-content *ngIf="h.title || h.description">
+      <ion-card-title>
+         {{h.title}}
+      </ion-card-title>
+       <div [innerHTML]="h.description"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer></ion-footer>

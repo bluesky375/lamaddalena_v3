@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'METEO' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+  
+<ion-content style="background-image: url('assets/images/bg-black.jpg'); color: white">
+
+<ion-card *ngFor="let m of meteos">
+<ion-item>
+   
+        <ion-avatar item-end>
+      <img src="{{m.tempo}}">
+    </ion-avatar>
+     <h2>
+      {{m.day | translate}}
+    </h2>
+    <p style="color: gray">{{m.tempo_alt}}</p>
+  </ion-item>
+
+  <ion-card-content style="background-color: white;">
+    <ion-row>
+    <ion-col>
+    <span style="color: gray">Temp. min/max</span>
+  </ion-col>
+  <ion-col>
+    <span style="color: gray">{{m.tempMin}}/{{m.tempMax}}</span>
+  </ion-col>
+<ion-col *ngIf="m.windstrong <= 28">
+    <span *ngIf="m.windpath=='Calma di vento'" style="color: green">{{'CALMA_DI_VENTO' | translate}}</span>
+    <span *ngIf="m.windpath!='Calma di vento'" style="color: gray">{{'VENTO' | translate}}: {{m.windstrong}} km/h</span>
+  </ion-col>
+  <ion-col *ngIf="m.windstrong > 28">
+    <span style="color: red">{{'VENTO' | translate}}: {{m.windstrong}} km/h</span>
+  </ion-col>
+  <ion-col *ngIf="m.windpath!='Calma di vento'">
+    <img height="32px" src="./assets/images/{{m.windpath}}.svg">
+  </ion-col>
+</ion-row>
+  </ion-card-content>
+  <ion-row style="background-color: white;">
+    <ion-col *ngIf="m.windpath!='Calma di vento'">
+      <button ion-button icon-start clear small (click)="openModal(m)">
+        <ion-icon name="information-circle"></ion-icon>{{'SPIAGGE_RIPARATE' | translate}}
+      </button>
+    </ion-col>     
+        <ion-col *ngIf="m.windpath=='Calma di vento'">
+      <p>&nbsp;</p>
+    </ion-col>   
+  </ion-row>
+</ion-card>
+ <ion-note>Informazioni elaborate dal Servizio Meteorologico dell’Aeronautica Militare e pubblicate sul sito www.meteoam.it</ion-note>
+</ion-content>
+<ion-footer></ion-footer>

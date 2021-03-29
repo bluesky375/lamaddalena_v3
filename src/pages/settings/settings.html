@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{'SETTINGS' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="main-menu" style="background-image: url('assets/images/bg-black.jpg'); color: white">
+ <ion-list radio-group [(ngModel)]="currentLanguage">
+  <ion-list-header>
+    {{'LANGUAGE' | translate }}
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>{{'ITALIAN' | translate }}</ion-label>
+    <ion-radio value="it" (click)="translateToItalian()"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{'ENGLISH' | translate }}</ion-label>
+    <ion-radio  value="en" (click)="translateToEnglish()"></ion-radio>
+  </ion-item>
+  </ion-list>
+<ion-list radio-group [(ngModel)]="currentTheme">
+   <ion-list-header>
+    {{'THEME' | translate }}
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>{{'THEME_DEFAULT' | translate }}</ion-label>
+    <ion-radio value="theme-dark" (click)="changeTheme('theme-dark')"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{'THEME_LIGHT' | translate }}</ion-label>
+    <ion-radio  value="theme-light" (click)="changeTheme('theme-light')"></ion-radio>
+  </ion-item>
+
+
+
+</ion-list>
+</ion-content>

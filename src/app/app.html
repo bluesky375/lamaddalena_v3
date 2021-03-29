@@ -1,0 +1,59 @@
+<div class="{{global.state['theme']}}">
+  <ion-menu [content]="content" id="mainMenu" class="main-menu">
+    <ion-content
+      style="background-image: url('assets/images/bg-black.jpg'); color: white"
+    >
+      <ion-list>
+        <ion-item text-center>
+          <img
+            *ngIf="global.state['theme'] == 'theme-light'"
+            class="title-image"
+            style="height: 70px"
+            src="assets/images/logo-black.jpg"
+            center
+            (click)="goHome()"
+          />
+          <img
+            *ngIf="global.state['theme'] != 'theme-light'"
+            class="title-image"
+            style="height: 70px"
+            src="assets/images/logo-bianco.png"
+            center
+            (click)="goHome()"
+          />
+
+          <!--<h5 text-center>{{ 'APP_MENU' | translate }}</h5> -->
+        </ion-item>
+        <button
+          ion-item
+          *ngFor="let p of navigationMenus"
+          (click)="openPage(p)"
+        >
+          <ion-avatar item-left>
+            <img [src]="p.image" />
+          </ion-avatar>
+          <h2>{{p.title | translate | uppercase }}</h2>
+        </button>
+
+        <ion-item *ngFor="let p of appMenus" (click)="openPage(p)">
+          <ion-avatar item-left>
+            <img [src]="p.image" />
+          </ion-avatar>
+          <h2>{{p.title | translate | uppercase}}</h2>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header> {{ 'SERVICE_MENUS' | translate }}</ion-list-header>
+
+        <ion-item *ngFor="let p of serviceMenus" (click)="openPage(p)">
+          <ion-avatar item-left>
+            <img [src]="p.image" />
+          </ion-avatar>
+          <h2>{{p.title | translate | uppercase}}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</div>
